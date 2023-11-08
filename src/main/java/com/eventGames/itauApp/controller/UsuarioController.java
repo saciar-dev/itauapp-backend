@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -20,10 +22,11 @@ public class UsuarioController {
         return usuarioService.createUsuario(usuario);
     }
 
-    @GetMapping("/{email}")
-    public ResponseEntity<Usuario> getSportByEmail(@PathVariable("email") String email){
+    @GetMapping
+    @CrossOrigin
+    public ResponseEntity<Usuario> getSportByEmail(@RequestParam String email, @RequestParam String telefono){
         ResponseEntity<Usuario> response =  null;
-        Usuario usuario = usuarioService.getUsuarioByEmail(email);
+        Usuario usuario = usuarioService.getUsuarioByEmail(email, telefono);
         if(usuario == null){
             response = new ResponseEntity<Usuario>( HttpStatus.NO_CONTENT);
         }

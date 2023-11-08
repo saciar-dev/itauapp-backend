@@ -14,8 +14,8 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario getUsuarioByEmail(String email){
-        Optional<Usuario> optionalUsuario = usuarioRepository.getUsuarioByEmail(email);
+    public Usuario getUsuarioByEmail(String email, String telefono){
+        Optional<Usuario> optionalUsuario = usuarioRepository.getUsuarioByEmail(email, telefono);
         if(optionalUsuario.isPresent())
             return optionalUsuario.get();
         else return null;
