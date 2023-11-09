@@ -15,9 +15,14 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public Usuario getUsuarioByEmail(String email, String telefono){
-        Optional<Usuario> optionalUsuario = usuarioRepository.getUsuarioByEmail(email, telefono);
-        if(optionalUsuario.isPresent())
-            return optionalUsuario.get();
+//        Optional<Usuario> optionalUsuario = usuarioRepository.getUsuarioByEmail(email, telefono);
+//        if(optionalUsuario.isPresent())
+//            return optionalUsuario.get();
+//        else return null;
+        List<Usuario> usuarios = usuarioRepository.getUsuarioByEmail(email, telefono);
+        if(usuarios.size() > 0){
+            return usuarios.get(0);
+        }
         else return null;
     }
 
